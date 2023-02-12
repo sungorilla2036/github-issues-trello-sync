@@ -17,7 +17,7 @@ jobs:
       - name: Sync Issues
         env:
           GH_USER: ${{ secrets.GH_USER }}
-          GH_REPOS: ( ${{ secrets.GH_REPOS }} )
+          GH_REPOS: ${{ fromJSON(secrets.GH_REPOS) }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
           TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
