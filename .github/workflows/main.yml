@@ -17,7 +17,7 @@ jobs:
       - name: Sync Issues
         env:
           GH_USER: sungorilla2036
-          GH_REPOS: BetterRumbleChat auto-youtoube-stream-archiver
+          GH_REPOS: BetterRumbleChat auto-youtoube-stream-archiver infrared-transcripts
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
           TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
