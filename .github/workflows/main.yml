@@ -16,8 +16,8 @@ jobs:
       - run: npm ci
       - name: Sync Issues
         env:
-          GH_USER: ${{ secrets.GH_USER }}
-          GH_REPOS: (${{ secrets.GH_REPOS }})
+          GH_USER: "sungorilla2036"
+          GH_REPOS: ( "BetterRumbleChat" "auto-youtoube-stream-archiver" )
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
           TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
