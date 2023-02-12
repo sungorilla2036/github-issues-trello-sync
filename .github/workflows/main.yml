@@ -1,0 +1,30 @@
+name: Sync Issues To Trello
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *" # run once every hour
+jobs:
+  get-new-videos:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 16
+      - run: npm ci
+      - name: Sync Issues
+        env:
+          GH_USER: ${{ secrets.GH_USER }}
+          GH_REPOS: ${{ secrets.GH_REPOS }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+          TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
+          TRELLO_BOARD_ID: ${{ secrets.TRELLO_BOARD_ID }}
+        run: |
+          for repo in "${GH_REPOS[@]}"
+          do
+            :
+            node app.js -u "$GH_USER" -r "$repo" -g "$GH_TOKEN" -k "$TRELLO_KEY" -t "$TRELLO_TOKEN" -b "$TRELLO_BOARD_ID"
+          done
