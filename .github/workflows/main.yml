@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: "0 * * * *" # run once every hour
 jobs:
-  get-new-videos:
+  sync-issues:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -24,5 +24,6 @@ jobs:
           TRELLO_BOARD_ID: ${{ secrets.TRELLO_BOARD_ID }}
         run: |
           for repo in "${GH_REPOS[@]}"; do
+            echo "$repo"
             node app.js -u "$GH_USER" -r "$repo" -g "$GH_TOKEN" -k "$TRELLO_KEY" -t "$TRELLO_TOKEN" -b "$TRELLO_BOARD_ID"
           done
